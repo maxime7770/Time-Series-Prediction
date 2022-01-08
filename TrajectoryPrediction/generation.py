@@ -12,11 +12,11 @@ from tensorflow.keras.preprocessing.sequence import TimeseriesGenerator
 # parameters to be used
 
 
-max_t = 1000
+max_t = 10000
 delta_t = 0.02
 features_len = 2
 
-sequence_len = 20
+sequence_len = 100
 predict_len = 5
 
 scale = 1
@@ -83,7 +83,6 @@ x_test = (x_test - mean) / std
 print("Dataset generated.")
 print("Train shape is : ", x_train.shape)
 print("Test  shape is : ", x_test.shape)
-
 
 
 train_generator = TimeseriesGenerator(
