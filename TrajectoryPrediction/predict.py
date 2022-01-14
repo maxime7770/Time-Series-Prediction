@@ -1,5 +1,6 @@
 import numpy as np
-import math, random
+import math
+import random
 from math import sin, cos, pi
 import matplotlib.pyplot as plt
 
@@ -16,9 +17,10 @@ model = keras.models.load_model("model2.h5")
 
 s = random.randint(0, len(x_test) - sequence_len)
 
-sequence = x_test[s : s + sequence_len]
-sequence_true = x_test[s : s + sequence_len + 1]
-sequence_pred = np.append(sequence, model.predict(np.array([sequence])), axis=0)
+sequence = x_test[s: s + sequence_len]
+sequence_true = x_test[s: s + sequence_len + 1]
+sequence_pred = np.append(
+    sequence, model.predict(np.array([sequence])), axis=0)
 plt.plot(
     [x[0] for x in sequence_true],
     [x[1] for x in sequence_true],
@@ -40,9 +42,9 @@ def get_prediction(dataset, model, iterations=4):
     # ---- Initial sequence
     #
     s = random.randint(0, len(dataset) - sequence_len - iterations)
-    sequence = dataset[s : s + sequence_len]
+    sequence = dataset[s: s + sequence_len]
     sequence_pred = sequence.copy()
-    sequence_true = dataset[s : s + sequence_len + iterations].copy()
+    sequence_true = dataset[s: s + sequence_len + iterations].copy()
 
     # ---- Iterate
     #
@@ -76,4 +78,3 @@ plt.plot(
 )
 plt.legend()
 plt.show()
-
