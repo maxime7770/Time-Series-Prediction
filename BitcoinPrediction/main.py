@@ -4,7 +4,8 @@ from tensorflow.keras.callbacks import TensorBoard
 from tensorflow.keras.preprocessing.sequence import TimeseriesGenerator
 
 import numpy as np
-import math, random
+import math
+import random
 import matplotlib.pyplot as plt
 
 import pandas as pd
@@ -14,7 +15,7 @@ from preprocessing import close_position
 
 sequence_len = 50
 batch_size = 1
-epochs = 30
+epochs = 5
 fit_verbosity = 1
 
 data = close_position
@@ -50,7 +51,7 @@ model.add(keras.layers.InputLayer(input_shape=(sequence_len, 1)))
 
 model.add(
     keras.layers.GRU(
-        100,
+        70,
         dropout=0.1,
         recurrent_dropout=0,
         return_sequences=False,
